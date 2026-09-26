@@ -4,13 +4,14 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "../components/navigation"
 import { Footer } from "../components/footer"
+import { CartProvider } from "../components/cart-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Fundo Agroecológico - Fresas y Frambuesas Orgánicas",
+  title: "Fundo Agroecológico | Berries de Pachacámac, Lima",
   description:
-    "Producimos fresas y frambuesas hidropónicas orgánicas de la más alta calidad en Lima, Perú. Certificación orgánica 2024.",
+    "Conoce las berries que cultivamos en Pachacámac, Lima. Consulta disponibilidad y condiciones directamente con el fundo.",
 }
 
 export default function RootLayout({
@@ -21,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
+        <CartProvider>
+          <Navigation />
+          <main>{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   )

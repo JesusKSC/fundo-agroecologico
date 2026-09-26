@@ -1,196 +1,158 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "../components/ui/button"
-import { Card, CardContent } from "../components/ui/card"
-import { Badge } from "../components/ui/badge"
-import { Leaf, Award, Truck, Shield, Star, ArrowRight } from "lucide-react"
+import { ArrowRight, Leaf, MapPin, Sprout, Truck } from "lucide-react"
+
+const destacados = [
+  {
+    nombre: "Fresas",
+    descripcion: "Fresas frescas cultivadas en el fundo, con todo su sabor.",
+    imagen: "/fresa.jpg",
+    precio: "S/ 15",
+  },
+  {
+    nombre: "Frambuesas",
+    descripcion: "Frambuesas delicadas y aromáticas, cosechadas en Lurín.",
+    imagen: "/frambruesas.jpeg",
+    precio: "S/ 20",
+  },
+]
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-green-600 via-emerald-500 to-teal-500 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto px-4 py-20 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <Badge className="bg-white/20 text-white border-white/30 hover:bg-white/30">
-                <Award className="w-4 h-4 mr-2" />
-                Certificación Orgánica 2024
-              </Badge>
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                Fresas y Frambuesas
-                <span className="block text-green-200">100% Orgánicas</span>
-              </h1>
-              <p className="text-xl text-green-100 max-w-lg">
-                Cultivamos con amor y tecnología hidropónica las frutas más frescas y nutritivas, directamente del campo
-                a tu mesa.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-white text-green-600 hover:bg-green-50">
-                  <Link href="/productos" className="flex items-center">
-                    Ver Productos
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                  <Link href="/nosotros">Conoce Nuestra Historia</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">10%</div>
-                    <div className="text-green-200">Incremento en Ventas</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">5%</div>
-                    <div className="text-green-200">Reducción de Costos</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">100%</div>
-                    <div className="text-green-200">Orgánico</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">2024</div>
-                    <div className="text-green-200">Certificación</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Productos Destacados */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Nuestros Productos</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Frutas hidropónicas de la más alta calidad, cultivadas con técnicas sostenibles
+    <div className="bg-[#F7F8F2] text-[#143322]">
+      <section className="overflow-hidden">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 lg:px-12 lg:py-20">
+          <div className="order-2 lg:order-1">
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.12em] text-[#1E5A38]">
+              Cultivando salud, cosechando futuro
             </p>
+            <h1 className="max-w-xl font-serif text-5xl leading-[1.04] text-[#143322] sm:text-6xl lg:text-7xl">
+              Berries agroecológicos del <span className="text-[#1E5A38]">Valle de Lurín.</span>
+            </h1>
+            <p className="mt-6 max-w-lg text-lg leading-8 text-[#4E6254]">
+              Fresas y frambuesas cultivadas con tecnología hidropónica y prácticas agroecológicas, directamente del fundo a tu mesa.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/productos"
+                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm bg-[#1E5A38] px-6 font-semibold text-white transition-colors hover:bg-[#143322]"
+              >
+                Explorar productos <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/nosotros"
+                className="inline-flex min-h-12 items-center justify-center rounded-sm border border-[#B8C5B8] px-6 font-semibold text-[#143322] transition-colors hover:border-[#1E5A38] hover:bg-white"
+              >
+                Conoce el fundo
+              </Link>
+            </div>
+            <div className="mt-10 flex items-center gap-3 border-t border-[#DCE3D8] pt-5 text-sm text-[#526558]">
+              <MapPin className="h-4 w-4 shrink-0 text-[#1E5A38]" />
+              <span>Producción local en el Valle de Lurín, Lima.</span>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="group hover:shadow-2xl transition-all duration-300 overflow-hidden border-0 bg-white">
-              <div className="relative h-64 bg-gradient-to-br from-red-50 to-pink-50">
-                <Image
-                  src="/fresa.jpg"
-                  alt="Fresas Orgánicas"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <Badge className="absolute top-4 left-4 bg-green-500 text-white">
-                  <Leaf className="w-3 h-3 mr-1" />
-                  Orgánico
-                </Badge>
+          <div className="relative order-1 min-h-[300px] sm:min-h-[420px] lg:order-2 lg:min-h-[520px]">
+            <Image
+              src="/captura.jpg"
+              alt="Producción del Fundo Agroecológico"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 55vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-[#143322]/80 to-transparent p-5 pt-20 text-white sm:p-7 sm:pt-24">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#D8EAA8]">Cultivo hidropónico</p>
+                <p className="mt-1 font-serif text-2xl sm:text-3xl">Frescura desde el origen</p>
               </div>
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Fresas</h3>
-                <p className="text-gray-600 mb-4">
-                  Fresas jugosas y dulces, cultivadas sin pesticidas en ambiente controlado
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="text-3xl font-bold text-green-600">S/ 15</div>
-                  <Button className="bg-green-600 hover:bg-green-700">
-                    <Link href="/productos">Pedir Ahora</Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-2xl transition-all duration-300 overflow-hidden border-0 bg-white">
-              <div className="relative h-64 bg-gradient-to-br from-purple-50 to-pink-50">
-                <Image
-                  src="/frambruesas.jpeg"
-                  alt="Frambuesas Orgánicas"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <Badge className="absolute top-4 left-4 bg-green-500 text-white">
-                  <Leaf className="w-3 h-3 mr-1" />
-                  Orgánico
-                </Badge>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Frambuesas</h3>
-                <p className="text-gray-600 mb-4">
-                  Frambuesas antioxidantes y deliciosas, perfectas para una alimentación saludable
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="text-3xl font-bold text-green-600">S/ 20</div>
-                  <Button className="bg-green-600 hover:bg-green-700">
-                    <Link href="/productos">Pedir Ahora</Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Ventajas Competitivas */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">¿Por Qué Elegirnos?</h2>
-            <p className="text-xl text-gray-600">Comprometidos con la calidad y la sostenibilidad</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center group">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
-                <Leaf className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">100% Orgánico</h3>
-              <p className="text-gray-600">Certificación orgánica oficial, sin químicos ni pesticidas</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
-                <Shield className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Calidad Garantizada</h3>
-              <p className="text-gray-600">Proceso de cultivo controlado para máxima calidad</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-200 transition-colors">
-                <Truck className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Entrega Fresca</h3>
-              <p className="text-gray-600">Del campo a tu mesa en menos de 24 horas</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-200 transition-colors">
-                <Star className="w-8 h-8 text-yellow-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Experiencia</h3>
-              <p className="text-gray-600">Años de experiencia en cultivo hidropónico</p>
+              <Leaf className="mb-1 h-6 w-6 text-[#D8EAA8]" aria-hidden="true" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">¿Listo para Probar la Diferencia?</h2>
-          <p className="text-xl mb-8 text-green-100">
-            Únete a cientos de familias que ya disfrutan de nuestros productos orgánicos
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-green-600 hover:bg-green-50">
-              <Link href="/productos">Ver Todos los Productos</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-              <Link href="/contactos">Contactar Ahora</Link>
-            </Button>
+      <section className="bg-[#143322] text-white" aria-label="Características del fundo">
+        <div className="mx-auto grid max-w-7xl gap-6 px-5 py-7 sm:grid-cols-3 sm:px-8 lg:px-12">
+          <div className="flex items-center gap-3">
+            <MapPin className="h-5 w-5 shrink-0 text-[#B7D977]" />
+            <span className="text-sm font-medium">Valle de Lurín, Lima</span>
           </div>
+          <div className="flex items-center gap-3">
+            <Sprout className="h-5 w-5 shrink-0 text-[#B7D977]" />
+            <span className="text-sm font-medium">Cultivo hidropónico y agroecológico</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Truck className="h-5 w-5 shrink-0 text-[#B7D977]" />
+            <span className="text-sm font-medium">Venta directa en Lima Metropolitana</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+        <div className="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.12em] text-[#1E5A38]">De nuestra cosecha</p>
+            <h2 className="font-serif text-4xl text-[#143322] sm:text-5xl">Fruta para saborear</h2>
+          </div>
+          <Link
+            href="/productos"
+            className="inline-flex items-center gap-2 pb-1 font-semibold text-[#1E5A38] transition-colors hover:text-[#143322]"
+          >
+            Ver catálogo <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {destacados.map((producto) => (
+            <article key={producto.nombre} className="group grid overflow-hidden border border-[#E1E6DD] bg-white sm:grid-cols-[0.9fr_1.1fr]">
+              <div className="relative min-h-60 overflow-hidden sm:min-h-72">
+                <Image
+                  src={producto.imagen}
+                  alt={producto.nombre}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 45vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="flex flex-col justify-between p-6 sm:p-7">
+                <div>
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#64804E]">Cosecha del fundo</p>
+                  <h3 className="font-serif text-3xl text-[#143322]">{producto.nombre}</h3>
+                  <p className="mt-3 leading-6 text-[#59685B]">{producto.descripcion}</p>
+                </div>
+                <div className="mt-7 flex items-end justify-between gap-3">
+                  <p className="text-2xl font-semibold text-[#1E5A38]">
+                    {producto.precio}<span className="ml-1 text-sm font-normal text-[#68766A]">/ kg</span>
+                  </p>
+                  <Link
+                    href="/productos"
+                    aria-label={`Ver ${producto.nombre} en el catálogo`}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-sm bg-[#EAF1DF] text-[#143322] transition-colors hover:bg-[#B7D977]"
+                  >
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-[#EAF1DF]">
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 sm:px-8 md:grid-cols-[1fr_auto] md:items-center lg:px-12 lg:py-16">
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.12em] text-[#1E5A38]">Conoce nuestra historia</p>
+            <h2 className="max-w-2xl font-serif text-4xl leading-tight text-[#143322] sm:text-5xl">
+              Cultivar con cuidado también se siente en el sabor.
+            </h2>
+          </div>
+          <Link
+            href="/nosotros"
+            className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm bg-[#143322] px-6 font-semibold text-white transition-colors hover:bg-[#1E5A38]"
+          >
+            Nuestra historia <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </div>
