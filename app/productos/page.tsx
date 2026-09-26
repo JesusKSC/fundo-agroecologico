@@ -1,179 +1,93 @@
 import Image from "next/image"
-import { Button } from "../../components/ui/button"
-import { Card, CardContent } from "../../components/ui/card"
-import { Badge } from "../../components/ui/badge"
-import { Leaf, Star, ShoppingCart, Heart } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight, Leaf } from "lucide-react"
+import { AddToCartButton } from "../../components/add-to-cart-button"
+import { products } from "../../lib/products"
+import { whatsappUrl } from "../../lib/whatsapp"
 
 export default function ProductosPage() {
-  const productos = [
-    {
-      id: 1,
-      nombre: "Fresas Hidropónicas Premium",
-      precio: 15,
-      descripcion: "Fresas jugosas y dulces, cultivadas en ambiente controlado sin pesticidas",
-      imagen: "/fresa.jpg",
-      categoria: "Fresas",
-      disponible: true,
-      rating: 4.9,
-      beneficios: ["Rico en Vitamina C", "Antioxidantes naturales", "Bajo en calorías"],
-    },
-    {
-      id: 2,
-      nombre: "Frambuesas Hidropónicas Premium",
-      precio: 20,
-      descripcion: "Frambuesas antioxidantes y deliciosas, perfectas para una alimentación saludable",
-      imagen: "/frambruesas.jpeg",
-      categoria: "Frambuesas",
-      disponible: true,
-      rating: 4.8,
-      beneficios: ["Alto en fibra", "Antioxidantes potentes", "Vitaminas A y C"],
-    },
-    {
-      id: 3,
-      nombre: "Mix de Berries Orgánicas",
-      precio: 30,
-      descripcion: "Combinación perfecta de fresas y frambuesas frescas",
-      imagen: "/berries.jpeg", // Puedes usar fresa.jpg como imagen principal
-      categoria: "Mix",
-      disponible: true,
-      rating: 5.0,
-      beneficios: ["Variedad de sabores", "Máximo valor nutricional", "Perfecto para smoothies"],
-    },
-    {
-      id: 4,
-      nombre: "Fresas Baby Orgánicas",
-      precio: 18,
-      descripcion: "Fresas pequeñas y concentradas en sabor, ideales para postres",
-      imagen: "/fresa.jpg",
-      categoria: "Fresas",
-      disponible: false,
-      rating: 4.7,
-      beneficios: ["Sabor concentrado", "Perfectas para decorar", "Textura única"],
-    },
-  ]
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
-      {/* Header Section */}
-    <section 
-      className="text-white py-16"
-      style={{
-        backgroundImage: "url('/captura.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "50% 20%",
-        backgroundRepeat: "no-repeat",
-      }}>
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="flex items-center justify-center mb-4">
-              <ShoppingCart className="w-12 h-12 mr-4" />
-              <h1 className="text-5xl font-bold">PRODUCTOS</h1>
-            </div>
-            <p className="text-xl text-green-100 max-w-2xl mx-auto">
-              Descubre nuestra selección de frutas hidropónicas orgánicas, cultivadas con amor y tecnología sostenible
-            </p>
-          </div>
+    <div className="bg-[#F7F8F2] text-[#143322]">
+      <section className="bg-[#143322] text-white">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+          <p className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-[#D8EAA8]">
+            <span className="h-px w-8 bg-[#B7D977]" />
+            Del campo a tu mesa
+          </p>
+          <h1 className="font-serif text-5xl leading-tight sm:text-6xl">Lo que cultivamos</h1>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#E0E9D9]">
+            Conoce las frutas que cuidamos desde el origen en Pachacámac. Consulta disponibilidad y condiciones directamente con el fundo.
+          </p>
         </div>
       </section>
 
-      {/* Productos Grid */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {productos.map((producto) => (
-              <Card
-                key={producto.id}
-                className="group hover:shadow-2xl transition-all duration-300 overflow-hidden border-0 bg-white"
-              >
-                <div className="relative h-80 bg-gradient-to-br from-red-50 to-pink-50">
+      <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12">
+        <div className="mb-8 flex items-start gap-3 border-l-2 border-[#B7D977] bg-white px-5 py-4 text-sm leading-6 text-[#526558]">
+          <Leaf className="mt-0.5 h-4 w-4 shrink-0 text-[#1E5A38]" />
+          <p>La certificación SENASA – Orgánico Perú se encuentra en trámite. Los precios mostrados son referencias del prototipo.</p>
+        </div>
+
+        <div className="grid gap-5 lg:grid-cols-2">
+          {products.map((product) => {
+            const inquiryLink = whatsappUrl(`Hola, quisiera consultar disponibilidad y precio de ${product.name} (${product.variety}).`)
+            return (
+              <article key={product.slug} className="group grid overflow-hidden border border-[#E1E6DD] bg-white sm:grid-cols-[0.9fr_1.1fr]">
+                <Link href={`/productos/${product.slug}`} className="relative min-h-64 overflow-hidden bg-[#EEF2E8] sm:min-h-80">
                   <Image
-                    src={producto.imagen || "/placeholder.svg"}
-                    alt={producto.nombre}
+                    src={product.image}
+                    alt={`${product.name} del Fundo Agroecológico`}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <Badge className="bg-green-500 text-white">
-                      <Leaf className="w-3 h-3 mr-1" />
-                      Orgánico
-                    </Badge>
-                    {!producto.disponible && <Badge variant="destructive">Agotado</Badge>}
+                  <span className="absolute left-4 top-4 inline-flex items-center gap-2 bg-[#F7F8F2] px-3 py-2 text-xs font-semibold text-[#143322]">
+                    <Leaf className="h-3.5 w-3.5 text-[#1E5A38]" />
+                    {product.variety}
+                  </span>
+                </Link>
+
+                <div className="flex flex-col justify-between p-5 sm:p-6">
+                  <div>
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#64804E]">Pachacámac · Lima</p>
+                    <h2 className="font-serif text-3xl leading-tight text-[#143322]">
+                      <Link href={`/productos/${product.slug}`} className="hover:text-[#1E5A38]">{product.name}</Link>
+                    </h2>
+                    <p className="mt-3 leading-6 text-[#59685B]">{product.description}</p>
                   </div>
-                  <Button size="icon" variant="secondary" className="absolute top-4 right-4 bg-white/80 hover:bg-white">
-                    <Heart className="w-4 h-4" />
-                  </Button>
+
+                  <div className="mt-7 flex flex-wrap items-end justify-between gap-4 border-t border-[#E6EAE3] pt-5">
+                    <div>
+                      {product.price !== null ? (
+                        <>
+                          <p className="text-2xl font-semibold text-[#1E5A38]">
+                            S/ {product.price}<span className="ml-1 text-sm font-normal text-[#68766A]">/ kg</span>
+                          </p>
+                          <p className="mt-1 text-xs text-[#68766A]">Precio referencial</p>
+                        </>
+                      ) : (
+                        <p className="text-sm font-semibold text-[#526558]">Consultar disponibilidad</p>
+                      )}
+                    </div>
+                    {product.price !== null ? (
+                      <AddToCartButton slug={product.slug} />
+                    ) : (
+                      <a
+                        href={inquiryLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-sm border border-[#1E5A38] px-4 font-semibold text-[#1E5A38] hover:bg-[#EAF1DF]"
+                      >
+                        Consultar <ArrowRight className="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
+                  <Link href={`/productos/${product.slug}`} className="mt-4 text-sm font-semibold text-[#1E5A38] hover:text-[#143322]">
+                    Ver detalle <ArrowRight className="ml-1 inline h-3.5 w-3.5" />
+                  </Link>
                 </div>
-
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="flex items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-4 h-4 ${
-                            i < Math.floor(producto.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <span className="text-sm text-gray-600">({producto.rating})</span>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{producto.nombre}</h3>
-                  <p className="text-gray-600 mb-4">{producto.descripcion}</p>
-
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-gray-900 mb-2">Beneficios:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {producto.beneficios.map((beneficio, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {beneficio}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="text-3xl font-bold text-green-600">
-                      S/ {producto.precio}
-                      <span className="text-sm text-gray-500 font-normal">/kg</span>
-                    </div>
-                    <Button
-                      className={`${
-                        producto.disponible ? "bg-green-600 hover:bg-green-700" : "bg-gray-400 cursor-not-allowed"
-                      }`}
-                      disabled={!producto.disponible}
-                    >
-                      {producto.disponible ? "Pedir Ahora" : "No Disponible"}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Información Adicional */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Información de Pedidos</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="p-6 bg-green-50 rounded-lg">
-                <h3 className="font-semibold text-lg mb-2">Pedido Mínimo</h3>
-                <p className="text-gray-600">S/ 25 para delivery gratuito en Lima</p>
-              </div>
-              <div className="p-6 bg-blue-50 rounded-lg">
-                <h3 className="font-semibold text-lg mb-2">Tiempo de Entrega</h3>
-                <p className="text-gray-600">24-48 horas desde la cosecha</p>
-              </div>
-              <div className="p-6 bg-purple-50 rounded-lg">
-                <h3 className="font-semibold text-lg mb-2">Frescura Garantizada</h3>
-                <p className="text-gray-600">100% de satisfacción o devolución</p>
-              </div>
-            </div>
-          </div>
+              </article>
+            )
+          })}
         </div>
       </section>
     </div>
